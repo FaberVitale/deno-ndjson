@@ -18,6 +18,6 @@ Deno.test({
     const expected = logExample;
     const output = await readNdjson("./fixtures/log_example.ndjson");
 
-    assertEquals(output, logExample);
+    assertEquals(output, expected);
   },
 });
