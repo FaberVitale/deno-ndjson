@@ -17,12 +17,14 @@ Deno.test({
     } finally {
       file?.close();
     }
-    
+
     assertEquals(output, []);
   },
 });
 
-Deno.test({ name: "parseNdjson: parses generic file", fn: async () => {
+Deno.test({
+  name: "parseNdjson: parses generic file",
+  fn: async () => {
     let file: Deno.File | null = null;
     const output: unknown[] = [];
 
@@ -35,6 +37,6 @@ Deno.test({ name: "parseNdjson: parses generic file", fn: async () => {
     } finally {
       file?.close();
     }
-    
+
     assertEquals(output, logExample);
 }});
