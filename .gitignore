@@ -2,6 +2,9 @@
 .vscode/*
 !.vscode/settings.json
 
+# generated test files
+fixtures/generated.*
+
 # Do not commit .env files
 .env
 .env.local

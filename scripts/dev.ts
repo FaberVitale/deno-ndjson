@@ -16,6 +16,7 @@ function processFilePaths(
   });
 }
 
+// Very simple format on save powered by `deno fmt`.
 async function main() {
   let timerIdRef = 0;
 

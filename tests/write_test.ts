@@ -2,11 +2,11 @@ import { assertEquals, path } from "../dev_deps.ts";
 import log_example, { serialized } from "../fixtures/log_example.ts";
 import { writeNdjson } from "../mod.ts";
 
-const testFilePath = path.resolve("./", "fixtures/test_file.ndjson");
+const testFilePath = path.resolve("./", "fixtures/generated.test_file.ndjson");
 
 Deno.test(
   {
-    name: "writeNdjson: supports `Deno.WriteFileOptions`",
+    name: "writeNdjson: `Deno.WriteFileOptions`",
     fn: async () => {
       try {
         const expected = serialized + serialized;

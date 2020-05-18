@@ -1,1 +1,1 @@
-export { readline as readLine } from "https://deno.land/x/readline/mod.ts";
+export { readLines } from "https://deno.land/std/io/bufio.ts";

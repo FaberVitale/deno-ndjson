@@ -3,7 +3,7 @@ import { readNdjson } from "../mod.ts";
 import logExample from "../fixtures/log_example.ts";
 
 Deno.test({
-  name: "readNdjson: reads empty file",
+  name: "readNdjson: empty file",
   fn: async () => {
     const expected: unknown[] = [];
     const output = await readNdjson("./fixtures/empty.ndjson");
@@ -13,7 +13,7 @@ Deno.test({
 });
 
 Deno.test({
-  name: "readNdjson: reads generic file",
+  name: "readNdjson: generic file",
   fn: async () => {
     const expected = logExample;
     const output = await readNdjson("./fixtures/log_example.ndjson");

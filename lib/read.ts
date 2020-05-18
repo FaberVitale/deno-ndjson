@@ -3,7 +3,7 @@ import { parseNdjson } from "./parse.ts";
 
 /**
  * Reads a ndjson file and returns a promise that resolves to its content 
- * parsed in array.
+ * parsed inside an array.
  * 
  * **Usage**
  * 

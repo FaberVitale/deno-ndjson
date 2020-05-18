@@ -1,12 +1,11 @@
-import { readLine } from "../deps.ts";
+import { readLines } from "../deps.ts";
 import { JSONData } from "./types.d.ts";
-
-const readLineOptions = {
-  separator: new Uint8Array([10]), //  `\n`, `\u000a`
-};
 
 /**
    * Given a `Deno.Reader` parses its content according to the `ndjson` format.
+   * 
+   * If the the options.strict is false parsing errors are ignored. 
+   * Default value `true`.
    * 
    * **Usage**
    * 
@@ -32,17 +31,14 @@ export async function* parseNdjson<T extends JSONData>(
   options?: { strict: boolean },
 ): AsyncIterableIterator<T> {
   const strict = options?.strict ?? true;
-  const decoder = new TextDecoder();
   let count = 0;
 
-  for await (const line of readLine(reader, readLineOptions)) {
+  for await (const line of readLines(reader)) {
     ++count;
 
-    if (line.length) {
-      const decoded = decoder.decode(line);
-
+    if (line.length && line !== "\r") {
       try {
-        yield JSON.parse(decoded);
+        yield JSON.parse(line);
       } catch (parsingError) {
         if (strict) {
           parsingError.message =
