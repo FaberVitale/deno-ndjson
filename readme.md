@@ -2,7 +2,7 @@
 
 ## Decription
 
-Read, write, parse and serialize newline delimited json, [aka NDJSON](https://github.com/ndjson/ndjson-spec).
+Read, write, parse and serialize newline delimited json, or [ndjson](http://ndjson.org/) for short.
 
 ## Usage
 
