@@ -73,6 +73,8 @@ const serialized: string = serializeNdJson([
 ]);
 ```
 
+### writeNdjson
+
 Writes the content of an array to a file in ndjson format.
 
 Optional third argument is [Deno.WriteFileOptions](https://doc.deno.land/https/github.com/denoland/deno/releases/latest/download/lib.deno.d.ts#Deno.WriteFileOptions)  and is passed down to the writer.
