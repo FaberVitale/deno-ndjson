@@ -1,4 +1,4 @@
-import { assertEquals, io } from "../dev_deps.ts";
+import { assertEquals, assertThrowsAsync, io } from "../dev_deps.ts";
 import { parseNdjson } from "../mod.ts";
 import logExample, { serialized } from "../fixtures/log_example.ts";
 
@@ -30,7 +30,7 @@ Deno.test({
 });
 
 Deno.test({
-  name: "parseNdjson: handles `\r\n`",
+  name: "parseNdjson: handles \\r\\n",
   fn: async () => {
     const output: unknown[] = [];
     const winStyleWithEmptyLines = "\r\n" + serialized.replace(/\n/g, "\r\n") +
@@ -46,7 +46,7 @@ Deno.test({
 });
 
 Deno.test({
-  name: "parseNdjson: `{ strict: false }`",
+  name: "parseNdjson: `{ strict: false }` ignores errors",
   fn: async () => {
     const output: unknown[] = [];
     const withInvalidLines = "{{\r\n" + serialized + "[\r\n";
@@ -57,5 +57,31 @@ Deno.test({
     }
 
     assertEquals(output, logExample);
+  },
+});
+
+Deno.test({
+  name: "parseNdjson: `{ strict: true }` throws with invalid data",
+
+  fn: async () => {
+    const withInvalidLines = "{{\r\n" + serialized + "[\r\n";
+    const stringReader = new io.StringReader(withInvalidLines);
+
+    assertThrowsAsync(async () => {
+      const output: unknown[] = [];
+
+      for await (const parsed of parseNdjson(stringReader, { strict: true })) {
+        output.push(parsed);
+      }
+    });
+
+    assertThrowsAsync(async () => {
+      const output: unknown[] = [];
+      const stringReader = new io.StringReader(withInvalidLines);
+
+      for await (const parsed of parseNdjson(stringReader)) {
+        output.push(parsed);
+      }
+    });
   },
 });
