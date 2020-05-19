@@ -4,18 +4,20 @@ import { JSONData } from "./types.d.ts";
 /**
    * Given a `Deno.Reader` parses its content according to the `ndjson` format.
    * 
-   * If the the options.strict is false parsing errors are ignored. 
-   * Default value `true`.
+   * If `options.strict` is `false` parsing errors are ignored, 
+   * defaults to `true`.
    * 
    * **Usage**
    * 
    * ```typescript
+   * import { parseNdjson } from 'https://deno.land/x/ndjson@1.0.0/mod.ts';
+   * 
    * let file: Deno.File | null = null;
    * 
    * try {
    *   file = await Deno.open("<file_name_here>");
    *   
-   *   for await (const parsed of readNdjson(file)) {
+   *   for await (const parsed of parseNdjson(file)) {
    *     console.log(parsed);
    *   }
    * } catch (readError) {

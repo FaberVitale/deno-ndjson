@@ -22,12 +22,14 @@ async function* parseNdjson<T extends JSONData>(
 #### example
 
 ```typescript
+import { parseNdjson } from 'https://deno.land/x/ndjson@1.0.0/mod.ts';
+
 let file: Deno.File | null = null;
 
 try {
   file = await Deno.open("<filepath_here>");
   
-  for await (const parsed of readNdjson(file)) {
+  for await (const parsed of parseNdjson(file)) {
     console.log(parsed);
   }
 } catch (readError) {
@@ -50,6 +52,8 @@ async function readNdjson<T extends JSONData[]>( filePath: string): Promise<T>
 #### example
 
 ```typescript
+import { readNdjson } from 'https://deno.land/x/ndjson@1.0.0/mod.ts';
+
 const parsed = await readNdjson("<file_path_here>");
 ```
 
@@ -66,6 +70,8 @@ function serializeNdJson(data: unknown[]): string
 #### example
 
 ```typescript
+import { serializeNdJson } from 'https://deno.land/x/ndjson@1.0.0/mod.ts';
+
 const serialized: string = serializeNdJson([
   { who: "let" },
   { the: "dogs" },
@@ -92,13 +98,15 @@ async function writeNdjson(
 #### example
 
 ```typescript
+import { writeNdjson } from 'https://deno.land/x/ndjson@1.0.0/mod.ts';
+
 const toBeWritten = [
   { message: 'qui', level: 'info', timestamp: '2020-05-08T14:05:25.091Z' }, 
   { message: 'que', level: 'info', timestamp: '2020-05-08T14:05:25.096Z' },
   { message: 'quod', level: 'info', timestamp: '2020-05-08T14:05:25.104Z' },
 ];
 
-await readNdjson('<file_path_here>', toBeWritten, { append: true }); 
+await writeNdjson('<file_path_here>', toBeWritten, { append: true }); 
 ```
 
 [source](./lib/write.ts)
