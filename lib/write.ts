@@ -11,7 +11,7 @@ import { encodeToUTF8 } from "../deps.ts";
  * **Usage**
  * 
  * ```typescript
- * import { writeNdjson } from 'https://deno.land/x/ndjson@1.0.1/mod.ts';
+ * import { writeNdjson } from 'https://deno.land/x/ndjson@1.0.2/mod.ts';
  * 
  * const toBeWritten = [
  *   { message: 'qui', level: 'info', timestamp: '2020-05-08T14:05:25.091Z' }, 
