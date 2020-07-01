@@ -1,4 +1,5 @@
 import { serializeNdJson } from "./serialize.ts";
+import { encodeToUTF8 } from "../deps.ts";
 
 /**
  * Writes an array of serializable entities to a file according to the
@@ -30,7 +31,7 @@ export async function writeNdjson(
 ): Promise<void> {
   await Deno.writeFile(
     filePath,
-    new TextEncoder().encode(serializeNdJson(data)),
+    encodeToUTF8(serializeNdJson(data)),
     options,
   );
 }
