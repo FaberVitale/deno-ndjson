@@ -3,9 +3,7 @@ import { path } from "../dev_deps.ts";
 function processFilePaths(
   cleanUp: () => void,
 ) {
-  cleanUp();
-
-  Deno.run({
+  const proc = Deno.run({
     "cmd": [
       "deno",
       "fmt",
@@ -14,13 +12,14 @@ function processFilePaths(
     stdout: "inherit",
     stderr: "inherit",
   });
+
+  proc.status().finally(cleanUp);
 }
 
 // Very simple format on save powered by `deno fmt`.
 async function main() {
   let timerIdRef = 0;
-
-  const cleanUp: () => void = () => {
+  const cleanUp: () => void = function cleanUp() {
     timerIdRef = 0;
   };
 
@@ -43,12 +42,8 @@ async function main() {
       allFormattableFilesRegex.test(path)
     );
 
-    if (matchedFiles.length > 0) {
-      if (!timerIdRef) {
-        timerIdRef = setTimeout(() => {
-          processFilePaths(cleanUp);
-        }, 300);
-      }
+    if (matchedFiles.length > 0 && !timerIdRef) {
+      timerIdRef = setTimeout(processFilePaths, 300, cleanUp);
     }
   }
 }

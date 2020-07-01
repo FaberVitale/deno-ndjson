@@ -1,0 +1,5 @@
+scripts:
+   dev: deno run --allow-run --allow-read='./' './scripts/dev.ts'
+   test: deno test --allow-read './' --allow-write='./fixtures' './'
+   fmt: deno fmt
+   lock: deno run --lock=lock.json --lock-write --reload mod.ts
