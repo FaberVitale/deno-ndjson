@@ -26,9 +26,6 @@ jobs:
         uses: denolib/setup-deno@c7d7968ad4a59c159a777f79adddad6872ee8d96
         with:
           deno-version: ${{ matrix.deno }} # tests across multiple Deno versions
-
-      - name: Setup env
-        run: "export PATH=\"$HOME/.deno/bin:$PATH\" && printenv"
       
       - name: Setup Velociraptor
         run: "deno install -qA -n vr https://deno.land/x/velociraptor@v1.0.0-beta.13/cli.ts"
@@ -37,7 +34,7 @@ jobs:
         run: deno cache deps.ts
 
       - name: Run formatter
-        run: "vr fmt-check"
+        run: "$HOME/.deno/bin/vr fmt-check"
 
       - name: Run tests
-        run: "vr test"
+        run: "$HOME/.deno/bin/vr test"
