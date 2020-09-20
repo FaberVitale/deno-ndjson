@@ -31,10 +31,9 @@ jobs:
         run: "deno install -qA -n vr https://deno.land/x/velociraptor@v1.0.0-beta.13/cli.ts"
 
       - name: Cache Dependencies
-        run: deno cache deps.ts
+        run: "deno cache deps.ts"
 
-      - name: Run formatter
-        run: "$HOME/.deno/bin/vr fmt-check"
-
-      - name: Run tests
-        run: "$HOME/.deno/bin/vr test"
+      - name: Run formatter and tests
+        run: "vr fmt-check && vr test"
+        env:
+          PATH: "PATH=\"$HOME/.deno/bin:$PATH\""
