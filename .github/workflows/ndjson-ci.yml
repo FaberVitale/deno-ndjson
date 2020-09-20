@@ -8,7 +8,7 @@ on:
   pull_request:
     branches: [master]
 
-jobs:
+jobs:      
   test:
     runs-on: ${{ matrix.os }} # runs a test on Ubuntu, Windows and macOS
 
@@ -35,5 +35,9 @@ jobs:
       - name: Cache Dependencies
         run: "deno cache deps.ts"
 
-      - name: Run formatter and tests
-        run: "vr fmt-check && vr test"
+      - name: Check formatting
+        if: matrix.os == 'ubuntu-latest'
+        run: "vr fmt-check"
+
+      - name: Run tests
+        run: "vr test"
