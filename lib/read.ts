@@ -1,4 +1,4 @@
-import { JSONData } from "./types.d.ts";
+import type { JSONData } from "./types.d.ts";
 import { parseNdjson } from "./parse.ts";
 
 /**

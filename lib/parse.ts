@@ -1,5 +1,5 @@
+import type { JSONData } from "./types.d.ts";
 import { readLines } from "../deps.ts";
-import { JSONData } from "./types.d.ts";
 
 /**
    * Given a `Deno.Reader` parses its content according to the `ndjson` format.

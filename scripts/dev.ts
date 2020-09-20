@@ -30,7 +30,7 @@ async function main() {
   const repoWatcher = Deno.watchFs(currentRepoPath);
   const allFormattableFilesRegex = path.globToRegExp(
     path.join(currentRepoPath, "**", "*.ts"),
-    { globstar: true, flags: "gi" },
+    { globstar: true },
   );
 
   for await (const event of repoWatcher) {
