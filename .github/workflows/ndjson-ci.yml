@@ -31,7 +31,7 @@ jobs:
         run: "deno install -qA -n vr https://deno.land/x/velociraptor@v1.0.0-beta.13/cli.ts"
 
       - name: Setup env
-        run: "::add-path::$HOME/.deno/bin"
+        run: "echo ::add-path::$HOME/.deno/bin"
 
       - name: Cache Dependencies
         run: "deno cache deps.ts"
