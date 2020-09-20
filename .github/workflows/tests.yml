@@ -28,7 +28,7 @@ jobs:
           deno-version: ${{ matrix.deno }} # tests across multiple Deno versions
 
       - name: Setup env
-        run: "export PATH=\"$HOME/.deno/bin:$PATH\""
+        run: "export PATH=\"$HOME/.deno/bin:$PATH\" && printenv"
       
       - name: Setup Velociraptor
         run: "deno install -qA -n vr https://deno.land/x/velociraptor@v1.0.0-beta.13/cli.ts"
