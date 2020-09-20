@@ -8,7 +8,7 @@ import { parseNdjson } from "./parse.ts";
  * **Usage**
  * 
  * ```typescript
- * import { readNdjson } from 'https://deno.land/x/ndjson@1.0.2/mod.ts';
+ * import { readNdjson } from 'https://deno.land/x/ndjson@v1.0.3/mod.ts';
  * 
  * const parsed = await readNdjson("<filePath_here>");
  * ```
