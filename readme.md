@@ -22,7 +22,7 @@ async function* parseNdjson<T extends JSONData>(
 #### example
 
 ```typescript
-import { parseNdjson } from 'https://deno.land/x/ndjson@v1.0.3/mod.ts';
+import { parseNdjson } from 'https://deno.land/x/ndjson@v1.0.4/mod.ts';
 
 let file: Deno.File | null = null;
 
@@ -52,7 +52,7 @@ async function readNdjson<T extends JSONData[]>( filePath: string): Promise<T>
 #### example
 
 ```typescript
-import { readNdjson } from 'https://deno.land/x/ndjson@v1.0.3/mod.ts';
+import { readNdjson } from 'https://deno.land/x/ndjson@v1.0.4/mod.ts';
 
 const parsed = await readNdjson("<file_path_here>");
 ```
@@ -70,7 +70,7 @@ function serializeNdJson(data: unknown[]): string
 #### example
 
 ```typescript
-import { serializeNdJson } from 'https://deno.land/x/ndjson@v1.0.3/mod.ts';
+import { serializeNdJson } from 'https://deno.land/x/ndjson@v1.0.4/mod.ts';
 
 const serialized: string = serializeNdJson([
   { who: "let" },
@@ -98,7 +98,7 @@ async function writeNdjson(
 #### example
 
 ```typescript
-import { writeNdjson } from 'https://deno.land/x/ndjson@v1.0.3/mod.ts';
+import { writeNdjson } from 'https://deno.land/x/ndjson@v1.0.4/mod.ts';
 
 const toBeWritten = [
   { message: 'qui', level: 'info', timestamp: '2020-05-08T14:05:25.091Z' }, 
