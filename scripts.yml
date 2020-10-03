@@ -3,4 +3,4 @@ scripts:
    test: deno test --allow-read=. --allow-write=fixtures
    fmt: deno fmt
    fmt-check: deno fmt --check
-   lock: deno run --lock=lock.json --lock-write --reload mod.tsvr upgrade
+   lock: deno run --lock=lock.json --lock-write --reload mod.ts
