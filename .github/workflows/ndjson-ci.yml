@@ -10,7 +10,7 @@ jobs:
 
     strategy:
       matrix:
-        deno: ["1.5.4"]
+        deno: ["1.10.3"]
         os: [macOS-latest, ubuntu-latest, windows-latest]
 
     steps:
@@ -23,7 +23,7 @@ jobs:
           deno-version: ${{ matrix.deno }} # tests across multiple Deno versions
   
       - name: Setup Velociraptor
-        run: "deno install -qA -n vr https://deno.land/x/velociraptor@1.0.0-beta.16/cli.ts"
+        run: "deno install -qAn vr https://deno.land/x/velociraptor@1.0.0/cli.ts"
 
       - name: Cache Dependencies
         run: "deno cache deps.ts dev_deps.ts"
