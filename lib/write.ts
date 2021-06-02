@@ -12,7 +12,7 @@ const encoder: TextEncoder = new TextEncoder();
  * **Usage**
  *
  * ```typescript
- * import { writeNdjson } from 'https://deno.land/x/ndjson@v1.0.4/mod.ts';
+ * import { writeNdjson } from 'https://deno.land/x/ndjson@v1.0.6/mod.ts';
  *
  * const toBeWritten = [
  *   { message: 'qui', level: 'info', timestamp: '2020-05-08T14:05:25.091Z' },

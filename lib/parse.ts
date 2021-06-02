@@ -10,7 +10,7 @@ import { readLines } from "../deps.ts";
    * **Usage**
    *
    * ```typescript
-   * import { parseNdjson } from 'https://deno.land/x/ndjson@v1.0.4/mod.ts';
+   * import { parseNdjson } from 'https://deno.land/x/ndjson@v1.0.6/mod.ts';
    *
    * let file: Deno.File | null = null;
    *
