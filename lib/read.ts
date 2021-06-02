@@ -2,14 +2,14 @@ import type { JSONData } from "./types.d.ts";
 import { parseNdjson } from "./parse.ts";
 
 /**
- * Reads a ndjson file and returns a promise that resolves to its content 
+ * Reads a ndjson file and returns a promise that resolves to its content
  * parsed inside an array.
- * 
+ *
  * **Usage**
- * 
+ *
  * ```typescript
- * import { readNdjson } from 'https://deno.land/x/ndjson@v1.0.4/mod.ts';
- * 
+ * import { readNdjson } from 'https://deno.land/x/ndjson@v1.0.5/mod.ts';
+ *
  * const parsed = await readNdjson("<filePath_here>");
  * ```
  * @see https://github.com/ndjson/ndjson-spec
