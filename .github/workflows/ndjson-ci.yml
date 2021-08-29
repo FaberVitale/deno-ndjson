@@ -26,6 +26,7 @@ jobs:
         run: "deno install -qAn vr https://deno.land/x/velociraptor@1.1.0/cli.ts"
 
       - name: Cache Dependencies
+        if: matrix.os != 'macOS-latest'
         run: "deno cache deps.ts dev_deps.ts"
 
       - name: Check formatting
