@@ -23,7 +23,7 @@ jobs:
           deno-version: ${{ matrix.deno }} # tests across multiple Deno versions
   
       - name: Setup Velociraptor
-        run: "deno install -qAn vr https://deno.land/x/velociraptor@1.0.0/cli.ts"
+        run: "deno install -qAn vr https://deno.land/x/velociraptor@1.1.0/cli.ts"
 
       - name: Cache Dependencies
         run: "deno cache deps.ts dev_deps.ts"
