@@ -10,7 +10,7 @@ jobs:
 
     strategy:
       matrix:
-        deno: ["1.10.3"]
+        deno: ["1.13.2"]
         os: [macOS-latest, ubuntu-latest, windows-latest]
 
     steps:
@@ -32,5 +32,9 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         run: "vr fmt-check"
 
+      - name: lint
+        if: matrix.os == 'ubuntu-latest'
+        run: "vr lint"
+      
       - name: Run tests
         run: "vr test"

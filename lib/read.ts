@@ -18,7 +18,7 @@ export async function readNdjson<T extends JSONData[]>(
   filePath: string,
 ): Promise<T> {
   const output = [] as unknown as T;
-  let file = await Deno.open(filePath);
+  const file = await Deno.open(filePath);
 
   try {
     for await (const parsed of parseNdjson(file)) {

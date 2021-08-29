@@ -1,5 +1,5 @@
 import { assertEquals, path } from "../dev_deps.ts";
-import log_example, { serialized } from "../fixtures/log_example.ts";
+import logExample, { serialized } from "../fixtures/log_example.ts";
 import { writeNdjson } from "../mod.ts";
 
 const testFilePath = path.resolve("./", "fixtures/generated.test_file.ndjson");
@@ -11,8 +11,8 @@ Deno.test(
       try {
         const expected = serialized + serialized;
 
-        await writeNdjson(testFilePath, log_example);
-        await writeNdjson(testFilePath, log_example, { append: true });
+        await writeNdjson(testFilePath, logExample);
+        await writeNdjson(testFilePath, logExample, { append: true });
 
         const writtenContent = await Deno.readTextFile(testFilePath);
 
