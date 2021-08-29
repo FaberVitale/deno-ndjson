@@ -1,19 +1,39 @@
 import { path } from "../dev_deps.ts";
 
-function processFilePaths(
-  cleanUp: () => void,
-) {
-  const proc = Deno.run({
+function fmt(): Deno.Process {
+  return Deno.run({
     "cmd": [
-      "deno",
+      "vr",
+      "run",
       "fmt",
     ],
     stdin: "inherit",
     stdout: "inherit",
     stderr: "inherit",
   });
+}
 
-  proc.status().finally(cleanUp);
+function lint(): Deno.Process {
+  return Deno.run({
+    "cmd": [
+      "vr",
+      "run",
+      "lint",
+    ],
+    stdin: "inherit",
+    stdout: "inherit",
+    stderr: "inherit",
+  });
+}
+
+function processFilePaths(
+  cleanUp: () => void,
+) {
+  lint().status().then(({ success }) => {
+    if (success) {
+      return fmt().status();
+    }
+  }).finally(cleanUp);
 }
 
 // Very simple format on save powered by `deno fmt`.
