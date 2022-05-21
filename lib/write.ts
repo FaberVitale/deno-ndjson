@@ -3,8 +3,8 @@ import { serializeNdJson } from "./serialize.ts";
 const encoder: TextEncoder = new TextEncoder();
 
 /**
- * Writes an array of serializable entities to a file according to the
- * ndjson format.
+ * Writes the serializable content of an array or an iterable
+ * to a file according to the ndjson format.
  *
  * Optional 3rd argument is `Deno.WriteFileOptions` and is passed down to the
  * writer.
@@ -27,7 +27,17 @@ const encoder: TextEncoder = new TextEncoder();
  */
 export async function writeNdjson(
   filePath: string,
+  data: Iterable<unknown>,
+  options?: Deno.WriteFileOptions,
+): Promise<void>;
+export async function writeNdjson(
+  filePath: string,
   data: unknown[],
+  options?: Deno.WriteFileOptions,
+): Promise<void>;
+export async function writeNdjson(
+  filePath: string,
+  data: unknown[] | Iterable<unknown>,
   options?: Deno.WriteFileOptions,
 ): Promise<void> {
   await Deno.writeFile(
