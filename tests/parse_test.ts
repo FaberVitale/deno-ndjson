@@ -1,4 +1,4 @@
-import { assertEquals, assertThrowsAsync, io } from "../dev_deps.ts";
+import { assertEquals, assertRejects, io } from "../dev_deps.ts";
 import { parseNdjson } from "../mod.ts";
 import logExample, { serialized } from "../fixtures/log_example.ts";
 
@@ -67,7 +67,7 @@ Deno.test({
     const withInvalidLines = "{{\r\n" + serialized + "[\r\n";
     const stringReader = new io.StringReader(withInvalidLines);
 
-    assertThrowsAsync(async () => {
+    assertRejects(async () => {
       const output: unknown[] = [];
 
       for await (const parsed of parseNdjson(stringReader, { strict: true })) {
@@ -75,7 +75,7 @@ Deno.test({
       }
     });
 
-    assertThrowsAsync(async () => {
+    assertRejects(async () => {
       const output: unknown[] = [];
       const stringReader = new io.StringReader(withInvalidLines);
 
