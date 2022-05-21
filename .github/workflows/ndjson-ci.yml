@@ -10,7 +10,7 @@ jobs:
 
     strategy:
       matrix:
-        deno: ["1.13.2"]
+        deno: ["1.22.0"]
         os: [macOS-latest, ubuntu-latest, windows-latest]
 
     steps:
