@@ -1,6 +1,9 @@
 import { assertEquals } from "../dev_deps.ts";
 import { serializeNdJson } from "../mod.ts";
-import logExample, { serialized, serializedMap } from "../fixtures/log_example.ts";
+import logExample, {
+  serialized,
+  serializedMap,
+} from "../fixtures/log_example.ts";
 
 Deno.test({
   name: "serializeNdJson: generic array",
@@ -8,7 +11,6 @@ Deno.test({
     assertEquals(serializeNdJson(logExample), serialized);
   },
 });
-
 
 Deno.test({
   name: "serializeNdJson: Set",
@@ -20,6 +22,9 @@ Deno.test({
 Deno.test({
   name: "serializeNdJson: Map",
   fn: () => {
-    assertEquals(serializeNdJson(new Map(logExample.map((val, idx) => [idx, val]))), serializedMap);
+    assertEquals(
+      serializeNdJson(new Map(logExample.map((val, idx) => [idx, val]))),
+      serializedMap,
+    );
   },
 });

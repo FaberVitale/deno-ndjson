@@ -1,5 +1,5 @@
 /**
- * Serializes the content of an array or an iterable 
+ * Serializes the content of an array or an iterable
  * to a sequence of json separated by new line characters.
  * @see https://github.com/ndjson/ndjson-spec
  */
