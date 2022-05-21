@@ -9,4 +9,5 @@ scripts:
      cmd:
        - vr lint
        - vr fmt
+       - git add .
      gitHook: pre-commit
